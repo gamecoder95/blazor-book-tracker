@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddCors(options => options.AddPolicy(name: "BookTrackerOrigins", policy => policy.WithOrigins().AllowAnyMethod().AllowAnyHeader()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +22,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.UseCors("BookTrackerOrigins");
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
