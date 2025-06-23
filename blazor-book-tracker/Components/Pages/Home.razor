@@ -1,7 +1,17 @@
 ﻿@page "/"
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world! Hi!</h1>
+<h1>Book Tracker</h1>
 
-Welcome to your new apps.
+<ol>
+    @foreach (var book in bookList)
+    {
+        <li>@book</li>
+    }
+</ol>
+
+@code {
+    private readonly List<string> bookList = new() { "The Sealed Nectar", "Riyad As-Saliheen", "Darussalam Umar pt 1" };
+}
