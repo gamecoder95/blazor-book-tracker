@@ -9,14 +9,14 @@
 <ol>
     @foreach (var book in bookList)
     {
-        <li><BookListItem Title="@book.Title" IsRead="@book.IsRead" Author="@book.Author" PublishDate="@book.PublishDate" /></li>
+        <li><BookListItem Title="@book.Title" IsRead="@book.IsRead" Author="@book.Author" PublishDate="@book.PublishDate" Description="@book.Description"/></li>
     }
 </ol>
 
 @code {
     private readonly List<Book> bookList = new() { 
-        new Book() { Title = "The Sealed Nectar",  Author = "Ibn Adam", PublishDate = DateTime.Today }, 
-        new Book() { Title = "Riyad As-Saliheen",  Author = "Ibn Adam", PublishDate = DateTime.Today, IsRead = true },
-        new Book() { Title = "Darussalam Umar pt 1" ,  Author = "Ibn Adam", PublishDate = DateTime.Today }
+        new Book() { Title = "The Sealed Nectar",  Author = "Ibn Adam", PublishDate = DateTime.Today, Description = "Seerah of the Prophet (SAWS)." }, 
+        new Book() { Title = "Riyad As-Saliheen",  Author = "Ibn Adam", PublishDate = DateTime.Today, IsRead = true, Description = "Hadith book." },
+        new Book() { Title = "Darussalam Umar pt 1" ,  Author = "Ibn Adam", PublishDate = DateTime.Today, Description = "First of a two-part series detailing the life of Umar ibn Al-Khattaab (RA)." }
     };
 }
