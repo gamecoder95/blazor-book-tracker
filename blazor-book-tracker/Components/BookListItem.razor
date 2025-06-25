@@ -1,7 +1,28 @@
 ﻿
-<li>@BookTitle</li>
+<div>
+
+    <InputCheckbox @bind-Value=@IsRead /> @Title
+    <p>By: @Author</p>
+    <p>Published: @PublishDate.ToString("MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</p>
+
+</div>
+
+
 
 @code {
+
     [Parameter]
-    public string BookTitle { get; set; } = "";
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public bool IsRead { get; set; } = false;
+
+    [Parameter]
+    public string Author { get; set; } = string.Empty;
+
+    [Parameter]
+    public DateTime PublishDate { get; set; } = new();
+
+    [Parameter]
+    public string Description { get; set; } = string.Empty;
 }

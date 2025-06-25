@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BookTrackerAPI.Models
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -8,10 +9,14 @@
 <ol>
     @foreach (var book in bookList)
     {
-        <BookListItem BookTitle="@book" />
+        <li><BookListItem Title="@book.Title" IsRead="@book.IsRead" Author="@book.Author" PublishDate="@book.PublishDate" /></li>
     }
 </ol>
 
 @code {
-    private readonly List<string> bookList = new() { "The Sealed Nectar", "Riyad As-Saliheen", "Darussalam Umar pt 1" };
+    private readonly List<Book> bookList = new() { 
+        new Book() { Title = "The Sealed Nectar",  Author = "Ibn Adam", PublishDate = DateTime.Today }, 
+        new Book() { Title = "Riyad As-Saliheen",  Author = "Ibn Adam", PublishDate = DateTime.Today, IsRead = true },
+        new Book() { Title = "Darussalam Umar pt 1" ,  Author = "Ibn Adam", PublishDate = DateTime.Today }
+    };
 }
